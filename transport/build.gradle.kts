@@ -6,7 +6,7 @@ plugins {
     kotlin("native.cocoapods")
     kotlin("plugin.serialization") version "1.4.31"
     id("com.android.library")
-    id("org.jetbrains.dokka") version "1.4.30"
+    id("org.jetbrains.dokka") version "1.6.0"
     id("org.jmailen.kotlinter")
     id("maven-publish")
     id("signing")
@@ -217,3 +217,7 @@ signing {
 }
 
 apply(from = "${rootDir}/jacoco.gradle.kts")
+
+tasks.dokkaHtml.configure {
+    outputDirectory.set(rootDir.resolve("transport/documentation/dokka"))
+}
