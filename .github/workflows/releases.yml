@@ -28,6 +28,11 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
           cache: 'gradle'
+          
+      - name: deployment settings
+        run: |
+          echo "deploymentId=0123456789ABCDEF" >> deployment.properties
+          echo "deploymentDomain=inindca.com" >> deployment.properties
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
