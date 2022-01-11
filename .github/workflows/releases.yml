@@ -29,11 +29,16 @@ jobs:
           java-version: '11'
           cache: 'gradle'
           
-      - name: deployment settings
+      - name: fake deployment settings to appease androidComposePrototype 
         run: |
           echo "deploymentId=0123456789ABCDEF" >> deployment.properties
           echo "deploymentDomain=inindca.com" >> deployment.properties
-
+          
+      - name: "Select the latest stable Xcode 12"
+        uses: devbotsxyz/xcode-select@v1
+        with:
+          version: "12"
+          
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
         
