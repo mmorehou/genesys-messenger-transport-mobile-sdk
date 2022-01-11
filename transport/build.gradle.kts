@@ -85,9 +85,6 @@ kotlin {
             export(Deps.Libs.kermit)
         }
         pod("jetfire", "~> 0.1.5")
-        tasks.withType(org.jetbrains.kotlin.gradle.tasks.CInteropProcess::class.java) {
-            settings.compilerOpts("-DNS_FORMAT_ARGUMENT(A)=")
-        }
     }
 
     sourceSets {

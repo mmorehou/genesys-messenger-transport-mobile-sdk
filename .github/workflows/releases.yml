@@ -38,6 +38,9 @@ jobs:
         uses: devbotsxyz/xcode-select@v1
         with:
           version: "12"
+
+      - name: set up cocoapods-generate
+        run: gem install cocoapods-generate
           
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
