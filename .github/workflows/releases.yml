@@ -33,12 +33,6 @@ jobs:
           echo "deploymentId=0123456789ABCDEF" >> deployment.properties
           echo "deploymentDomain=inindca.com" >> deployment.properties
           
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-          
-      - name: Assemble release aar to ./transport/build/outputs/aar/transport-release.aar
-        run: ./gradlew :transport:assembleRelease
-          
       - name: "Select the latest stable Xcode 12"
         uses: devbotsxyz/xcode-select@v1
         with:
@@ -46,6 +40,12 @@ jobs:
 
       - name: Set up cocoapods-generate
         run: gem install cocoapods-generate
+      
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
         
       - name: Assemble release xcframework to transport/build/XCFrameworks/release/MessengerTransport.xcframework
         run: ./gradlew :transport:assembleMessengerTransportReleaseXCFramework
+
+      - name: Assemble release aar to ./transport/build/outputs/aar/transport-release.aar
+        run: ./gradlew :transport:assembleRelease
