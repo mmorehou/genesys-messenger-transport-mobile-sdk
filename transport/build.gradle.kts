@@ -52,23 +52,40 @@ kotlin {
         }
     }
 
+    val xcf = XCFramework(iosFrameworkName)
+    val configureIos : KotlinNativeTarget.() -> Unit = {
+        println("iOS Target: name = $name, preset = ${preset?.name}")
+        val platform = when (preset?.name) {
+            "iosX64" -> "iphonesimulator"
+            "iosArm64" -> "iphoneos"
+            else -> error("Unsupported target $name")
+        }
+        compilations.getByName("main") {
+            val SocketWrench by cinterops.creating {
+                val interopTask = tasks[interopProcessingTaskName]
+                interopTask.dependsOn(":SocketWrench:build${platform.capitalize()}")
+
+                defFile("$projectDir/src/nativeInterop/cinterop/SocketWrench.def")
+                includeDirs.headerFilterOnly("$rootDir/SocketWrench/build/Release-$platform/include")
+            }
+        }
+        binaries.framework {
+            baseName = iosFrameworkName
+            xcf.add(this)
+        }
+    }
+
     if (properties.containsKey("android.injected.invoked.from.ide")) {
         // When running from Android Studio, the shared iOS source set needs this workaround for IDE features like code-completion/highlighting with 3rd party iOS libs
-        // https://kotlinlang.org/docs/kmm-add-dependencies.html#workaround-to-enable-ide-support-for-the-shared-ios-source-set
+        // https://kotlinlang.org/docs/multiplatform-mobile-ios-dependencies.html#workaround-to-enable-ide-support-for-the-shared-ios-source-set
         val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
             System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
             System.getenv("NATIVE_ARCH")?.startsWith("arm") == true -> ::iosSimulatorArm64
             else -> ::iosX64
         }
-        iosTarget("ios") {}
+        iosTarget("ios", configureIos)
     } else {
-        val xcf = XCFramework(iosFrameworkName)
-        ios {
-            binaries.framework {
-                baseName = iosFrameworkName
-                xcf.add(this)
-            }
-        }
+        ios(configure = configureIos)
     }
 
     cocoapods {

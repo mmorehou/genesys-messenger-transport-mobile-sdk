@@ -11,3 +11,5 @@ rootProject.name = "messenger-mobile-sdk"
 include(":transport")
 
 include(":androidComposePrototype")
+
+include(":SocketWrench")
