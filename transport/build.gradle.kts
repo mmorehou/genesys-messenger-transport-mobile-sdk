@@ -66,7 +66,7 @@ kotlin {
                 interopTask.dependsOn(":SocketWrench:build${platform.capitalize()}")
 
                 defFile("$projectDir/src/nativeInterop/cinterop/SocketWrench.def")
-                includeDirs.headerFilterOnly("$rootDir/SocketWrench/build/Release-$platform/include")
+                includeDirs.headerFilterOnly("$rootDir/SocketWrench/DerivedData/Build/Products/Release-$platform/include")
             }
         }
         binaries.framework {

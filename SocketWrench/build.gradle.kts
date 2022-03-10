@@ -5,8 +5,10 @@ listOf("iphoneos", "iphonesimulator").forEach { sdk ->
         commandLine(
             "xcodebuild",
             "-project", "SocketWrench.xcodeproj",
-            "-target", "SocketWrench",
-            "-sdk", sdk
+            "-scheme", "SocketWrench",
+            "-sdk", sdk,
+            "-configuration", "Release",
+            "-derivedDataPath", "DerivedData"
         )
         workingDir(projectDir)
 
@@ -15,7 +17,7 @@ listOf("iphoneos", "iphonesimulator").forEach { sdk ->
             fileTree("$projectDir/SocketWrench")
         )
         outputs.files(
-            fileTree("$projectDir/build/Release-${sdk}")
+            fileTree("$projectDir/DerivedData/Build/Products/Release-${sdk}")
         )
     }
 }
@@ -23,5 +25,5 @@ listOf("iphoneos", "iphonesimulator").forEach { sdk ->
 tasks.create<Delete>("clean") {
     group = "build"
 
-    delete("$projectDir/build")
+    delete("$projectDir/DerivedData")
 }

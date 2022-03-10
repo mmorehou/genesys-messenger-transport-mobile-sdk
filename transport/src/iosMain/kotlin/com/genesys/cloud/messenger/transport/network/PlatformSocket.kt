@@ -3,6 +3,7 @@ package com.genesys.cloud.messenger.transport.network
 import cocoapods.jetfire.JFRWebSocket
 import com.genesys.cloud.messenger.transport.core.Configuration
 import com.genesys.cloud.messenger.transport.util.logs.Log
+import native.ios.socketWrench.SocketWrench
 import platform.Foundation.NSData
 import platform.Foundation.NSTimer
 import platform.Foundation.NSURL
@@ -15,6 +16,7 @@ internal actual class PlatformSocket actual constructor(
     private val url = configuration.webSocketUrl
     private val socketEndpoint = NSURL.URLWithString(url.toString())!!
     private var socket: JFRWebSocket? = null
+    private var skt: SocketWrench? = null
     private var pingTimer: NSTimer? = null
 
     actual fun openSocket(listener: PlatformSocketListener) {
