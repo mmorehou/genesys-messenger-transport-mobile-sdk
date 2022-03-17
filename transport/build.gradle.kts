@@ -101,7 +101,7 @@ kotlin {
             // To specify a custom Objective-C prefix/name for the Kotlin framework, use the `-module-name` compiler option or matching Gradle DSL statement.
             freeCompilerArgs += listOf("-module-name", "GCM")
         }
-        pod("jetfire", "~> 0.1.5")
+        pod("Starscream", "~> 4.0.4")
     }
 
     sourceSets {

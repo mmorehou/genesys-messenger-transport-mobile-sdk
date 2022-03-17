@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
 
     spec.ios.deployment_target = '11.0'
 
-    spec.dependency 'jetfire', '~> 0.1.5'
+    spec.dependency 'Starscream', '~> 4.0.4'
 
     spec.pod_target_xcconfig = {
         'KOTLIN_PROJECT_PATH' => ':transport',

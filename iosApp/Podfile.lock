@@ -1,23 +1,23 @@
 PODS:
-  - jetfire (0.1.5)
+  - Starscream (4.0.4)
   - transport (1.1.14):
-    - jetfire (~> 0.1.5)
+    - Starscream (~> 4.0.4)
 
 DEPENDENCIES:
   - transport (from `../transport`)
 
 SPEC REPOS:
   trunk:
-    - jetfire
+    - Starscream
 
 EXTERNAL SOURCES:
   transport:
     :path: "../transport"
 
 SPEC CHECKSUMS:
-  jetfire: 60c16cd6ae0282928e24203eb93f03b89c1929ce
-  transport: f5e5840e78e06262b75fba91c22be852a8c903bf
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  transport: deaf6426b3d5e9ba16049bdc10a11993cebc30bf
 
-PODFILE CHECKSUM: 5eac24c446a9287e8ab64ba98923743c10ec8982
+PODFILE CHECKSUM: c37c4bdbffb53e19d036b84837e9afb78d70a86a
 
 COCOAPODS: 1.11.2

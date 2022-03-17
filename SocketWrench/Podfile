@@ -1,8 +1,7 @@
 platform :ios, '11.0'
 
-target 'iosApp' do
-  use_frameworks!
-  pod 'transport', :path => '../transport'
+target 'SocketWrench' do
+  pod 'Starscream', '~> 4.0.4'
 end
 
 post_install do |installer|

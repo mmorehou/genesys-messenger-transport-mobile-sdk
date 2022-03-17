@@ -4,7 +4,7 @@ listOf("iphoneos", "iphonesimulator").forEach { sdk ->
 
         commandLine(
             "xcodebuild",
-            "-project", "SocketWrench.xcodeproj",
+            "-workspace", "SocketWrench.xcworkspace",
             "-scheme", "SocketWrench",
             "-sdk", sdk,
             "-configuration", "Release",

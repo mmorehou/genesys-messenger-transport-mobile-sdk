@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C79393D27C80A0300AC49EB /* SocketWrench.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79393C27C80A0300AC49EB /* SocketWrench.swift */; };
+		97925F2BA9D2B5E004D512D5 /* libPods-SocketWrench.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3143771C69100682465ECF67 /* libPods-SocketWrench.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,9 +24,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		302F79785103E795553F79D6 /* Pods-SocketWrench.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketWrench.release.xcconfig"; path = "Target Support Files/Pods-SocketWrench/Pods-SocketWrench.release.xcconfig"; sourceTree = "<group>"; };
+		3143771C69100682465ECF67 /* libPods-SocketWrench.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocketWrench.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C79393927C80A0300AC49EB /* libSocketWrench.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSocketWrench.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C79393C27C80A0300AC49EB /* SocketWrench.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketWrench.swift; sourceTree = "<group>"; };
 		8C79394327C8116A00AC49EB /* SocketWrench-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocketWrench-Bridging-Header.h"; sourceTree = "<group>"; };
+		A097717DCEAA74319074C9AD /* Pods-SocketWrench.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocketWrench.debug.xcconfig"; path = "Target Support Files/Pods-SocketWrench/Pods-SocketWrench.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97925F2BA9D2B5E004D512D5 /* libPods-SocketWrench.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16BA75E7B420357F23F651BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3143771C69100682465ECF67 /* libPods-SocketWrench.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		230443BC7AF37EC91DA85039 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A097717DCEAA74319074C9AD /* Pods-SocketWrench.debug.xcconfig */,
+				302F79785103E795553F79D6 /* Pods-SocketWrench.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8C79393027C80A0300AC49EB = {
 			isa = PBXGroup;
 			children = (
 				8C79393B27C80A0300AC49EB /* SocketWrench */,
 				8C79393A27C80A0300AC49EB /* Products */,
+				230443BC7AF37EC91DA85039 /* Pods */,
+				16BA75E7B420357F23F651BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +96,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C79394027C80A0300AC49EB /* Build configuration list for PBXNativeTarget "SocketWrench" */;
 			buildPhases = (
+				BEBC9DA30B4840A07749AC09 /* [CP] Check Pods Manifest.lock */,
 				8C79393527C80A0300AC49EB /* Sources */,
 				8C79393627C80A0300AC49EB /* Frameworks */,
 				8C79393727C80A0300AC49EB /* CopyFiles */,
@@ -134,6 +160,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Copy SocketWrench-Swift.h to include directory.\n# This should be done automatically, but there is a bug in Xcode:\n# https://developer.apple.com/forums/thread/89209\n\ntargetDir=${BUILT_PRODUCTS_DIR}/include/${PRODUCT_MODULE_NAME}/\nmkdir -p $targetDir\ncp ${DERIVED_SOURCES_DIR}/*-Swift.h ${targetDir}\n";
+		};
+		BEBC9DA30B4840A07749AC09 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SocketWrench-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -267,6 +315,7 @@
 		};
 		8C79394127C80A0300AC49EB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A097717DCEAA74319074C9AD /* Pods-SocketWrench.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9U57N843V9;
@@ -281,6 +330,7 @@
 		};
 		8C79394227C80A0300AC49EB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 302F79785103E795553F79D6 /* Pods-SocketWrench.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9U57N843V9;
